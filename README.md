@@ -21,7 +21,8 @@
 
 ## Repo
 
-+ Added
-- Removed
-* Modified
-/ Moved
+<ul>
+<li>+ Added</li>
+<li>- Removed</li>
+<li>* Modified</li>
+</ul>
