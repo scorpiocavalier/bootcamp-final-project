@@ -1,6 +1,8 @@
 # Bootcamp Final Project
 
-## MERN Stack:
+## Technologies Used
+
+### MERN Stack
 
 <ul>
   <li>MongoDB</li>
@@ -9,9 +11,17 @@
   <li>Node</li>
 </ul>
 
-### Other Technologies Used:
+### Other Technologies
 
 <ul>
   <li>GraphQL</li>
   <li>Firebase Auth / Passport</li>
 </ul>
+
+
+## Repo
+
++ Added
+- Removed
+* Modified
+/ Moved
