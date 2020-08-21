@@ -1,5 +1,6 @@
 import { config } from 'dotenv'
 import express from 'express'
+import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
 
@@ -9,7 +10,7 @@ const { PORT } = process.env
 
 // Setup express app
 const app = express()
-app.use(express.json())
+app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use(cors)
 

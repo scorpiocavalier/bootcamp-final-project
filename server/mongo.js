@@ -1,15 +1,12 @@
-import { connect, connection } from 'mongoose'
 import { config } from 'dotenv'
+import { connect, connection } from 'mongoose'
 
 // Import the secrets
 config()
 const { MONGODB_URI } = process.env
 
 // Connect to mongodb
-connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, })
 
 const db = connection
 db.on('error', console.error.bind(console, 'conection error:'))
