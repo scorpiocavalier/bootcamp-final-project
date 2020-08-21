@@ -15,7 +15,7 @@
 
 <ul>
   <li>GraphQL</li>
-  <li>Firebase Auth / Passport</li>
+  <li>Firebase Auth</li>
 </ul>
 
 
