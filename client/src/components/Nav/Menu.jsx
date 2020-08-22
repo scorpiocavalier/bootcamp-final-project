@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+import { StoreIcon } from '../Icons'
+
 export const Menu = () => {
 	const [active, setActive] = useState(false)
 	const toggleMenu = () => setActive(!active)
@@ -20,7 +22,10 @@ export const Menu = () => {
 			<NavLinks onClick={toggleMenu} active={active}>
 				<DropdownLink to='/'>Home</DropdownLink>
 			</NavLinks>
-			<Brand>Project</Brand>
+			<Brand>
+				<StoreIcon fill={"#fff"} />
+				<Span>Simplify</Span>
+			</Brand>
 		</Wrapper>
 	)
 }
@@ -103,10 +108,18 @@ const DropdownLink = styled(Link)`
 `
 
 const Brand = styled.span`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	font-size: 1.2rem;
-	color: white;
+	display: none;
+
+	@media (min-width: 768px) {
+		display: flex;
+		align-items: center;
+		padding-left: 1rem;
+		height: 100%;
+		font-size: 1.2rem;
+		color: white;
+	}
+`
+
+const Span = styled.span`
+	margin-left: 0.8rem;
 `

@@ -39,6 +39,20 @@ const Grid = styled.div`
 			'nav nav'
 			'sidebar content';
 	}
+
+	@media (min-width: 1024px) {
+		grid: 8vh 92vh / 1fr 4fr;
+		grid-template-areas:
+			'nav nav'
+			'sidebar content';
+	}
+
+	@media (min-width: 1440px) {
+		grid: 8vh 92vh / 1fr 5fr;
+		grid-template-areas:
+			'nav nav'
+			'sidebar content';
+	}
 `
 
 const NavSection = styled.div`
