@@ -14,6 +14,10 @@ export const Menu = () => {
 
 	return (
 		<Wrapper ref={dropdownRef}>
+			<Brand>
+				<StoreIcon fill={'#fff'} size={'1.5rem'} />
+				<BrandName>Simplify</BrandName>
+			</Brand>
 			<BurgerMenu onClick={toggleMenu}>
 				<BurgerLine1 active={active} />
 				<BurgerLine2 active={active} />
@@ -21,11 +25,11 @@ export const Menu = () => {
 			</BurgerMenu>
 			<NavLinks onClick={toggleMenu} active={active}>
 				<DropdownLink to='/'>Home</DropdownLink>
+				<DropdownLink to='/'>Orders</DropdownLink>
+				<DropdownLink to='/'>Products</DropdownLink>
+				<DropdownLink to='/'>Customers</DropdownLink>
+				<DropdownLink to='/'>Analytics</DropdownLink>
 			</NavLinks>
-			<Brand>
-				<StoreIcon fill={"#fff"} />
-				<Span>Simplify</Span>
-			</Brand>
 		</Wrapper>
 	)
 }
@@ -35,11 +39,28 @@ const Wrapper = styled.div`
 	width: 100%;
 `
 
+const Brand = styled.span`
+	display: none;
+
+	@media (min-width: 768px) {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		font-size: 1.2rem;
+		color: white;
+	}
+`
+
+const BrandName = styled.span`
+	margin-left: 0.8rem;
+`
+
 const BurgerMenu = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
 	height: 100%;
 
 	@media (min-width: 768px) {
@@ -77,7 +98,7 @@ const NavLinks = styled.div`
 	top: 8vh;
 	left: 0;
 	width: 100%;
-	background: rgba(23, 25, 25, 0.5);
+	background: rgba(28, 34, 96, 0.8);
 	opacity: ${p => (p.active ? 1 : 0)};
 	transition: all 0.2s linear;
 
@@ -90,7 +111,7 @@ const DropdownLink = styled(Link)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 60px;
+	height: 8vh;
 	width: 100%;
 	color: #fff;
 	font-size: 18px;
@@ -99,27 +120,6 @@ const DropdownLink = styled(Link)`
 		color: #fff;
 	}
 	&:hover {
-		background: rgba(25, 25, 25, 0.55);
+		background: rgba(28, 34, 96, 1);
 	}
-
-	@media (min-width: 768px) {
-		display: none;
-	}
-`
-
-const Brand = styled.span`
-	display: none;
-
-	@media (min-width: 768px) {
-		display: flex;
-		align-items: center;
-		padding-left: 1rem;
-		height: 100%;
-		font-size: 1.2rem;
-		color: white;
-	}
-`
-
-const Span = styled.span`
-	margin-left: 0.8rem;
 `

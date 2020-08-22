@@ -7,7 +7,7 @@ import {
   ProductsIcon,
   CustomersIcon,
   AnalyticsIcon,
-} from './Icons'
+} from '../Icons'
 
 export const Sidebar = () => {
   return (

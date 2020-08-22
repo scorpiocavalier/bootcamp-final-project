@@ -26,6 +26,7 @@ const Navbar = styled.nav`
 	justify-content: space-between;
 	height: 100%;
 	width: 100%;
+	padding: 0 1.2rem;
 	background: #1c2260;
 `
 
@@ -33,19 +34,19 @@ const MenuSection = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 15vw;
+	width: 15%;
 `
 
 const SearchSection = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 70vw;
+	width: 70%;
 `
 
 const ProfileSection = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 15vw;
+	width: 15%;
 `

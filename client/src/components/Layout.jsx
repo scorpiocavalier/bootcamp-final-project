@@ -55,11 +55,11 @@ const Grid = styled.div`
 	}
 `
 
-const NavSection = styled.div`
+const NavSection = styled.section`
 	grid-area: nav;
 `
 
-const SidebarSection = styled.div`
+const SidebarSection = styled.section`
 	grid-area: sidebar;
 	border-right: 2px solid #ccc;
 	display: none;
@@ -69,6 +69,6 @@ const SidebarSection = styled.div`
 	}
 `
 
-const ContentSection = styled.div`
+const ContentSection = styled.section`
 	grid-area: content;
 `

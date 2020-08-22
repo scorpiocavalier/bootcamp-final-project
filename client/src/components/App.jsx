@@ -1,9 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import { Layout } from './Layout'
 
 export default () => (
 	<Layout>
-		{/* <div>Content Area</div> */}
+		<Content>Content Area</Content>
 	</Layout>
 )
+
+const Content = styled.section`
+	width: 100%;
+	height: 100%;
+`
