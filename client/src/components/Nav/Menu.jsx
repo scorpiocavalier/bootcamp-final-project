@@ -120,6 +120,6 @@ const DropdownLink = styled(Link)`
 		color: #fff;
 	}
 	&:hover {
-		background: rgba(28, 34, 96, 1);
+		background: rgba(28, 34, 96, 0.8);
 	}
 `
