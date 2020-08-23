@@ -39,6 +39,7 @@ export const Sidebar = () => {
 const List = styled.ul`
   display: flex;
   flex-direction: column;
+	padding-top: 1rem;
   width: 100%;
   height: 100%;
 `
@@ -47,7 +48,7 @@ const ListItem = styled.li`
   display: flex;
   align-items: center;
   height: 50px;
-  padding-left: 20px;
+  padding-left: 2rem;
   /* background: darkslateblue; */
   /* color: white; */
   /* border-bottom: 1px solid #ccc; */

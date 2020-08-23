@@ -11,9 +11,11 @@ export const Nav = () => {
 			<MenuSection>
 				<Menu />
 			</MenuSection>
+
 			<SearchSection>
 				<Searchbar />
 			</SearchSection>
+			
 			<ProfileSection>
 				<Profile />
 			</ProfileSection>
@@ -50,16 +52,25 @@ const MenuSection = styled.section`
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	padding-left: 1.2rem;
+	padding-left: 1rem;
 	/* border: solid green; */
+
+	@media (min-width: 768px) {
+		padding-left: 2rem;
+	}
 `
 
 const SearchSection = styled.section`
 	grid-area: search;
-	justify-content: center;
+	display: grid;
 	align-items: center;
 	width: 100%;
+	padding: 0 1rem;
 	/* border: solid red; */
+
+	@media (min-width: 768px) {
+		padding: 0;
+	}
 `
 
 const ProfileSection = styled.section`
@@ -68,6 +79,10 @@ const ProfileSection = styled.section`
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	padding-right: 1.2rem;
+	padding-right: 2rem;
 	/* border: solid blue; */
+
+	@media (min-width: 768px) {
+		display: flex;
+	}
 `
