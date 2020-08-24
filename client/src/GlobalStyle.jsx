@@ -30,16 +30,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    /* border: 1px solid #ccc;
-    background: none;
-    padding: 12px 10px;
-    margin: 10px;
+    border: none;
     border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-      background: #2b3b4a;
-      color: white;
-    } */
+    background: #f4f6f8;
   }
 `
