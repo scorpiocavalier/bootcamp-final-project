@@ -5,11 +5,12 @@ import { Layout } from './Layout'
 
 export default () => (
 	<Layout>
-		<Content>Content Area</Content>
+		<ContentSection>Content Area</ContentSection>
 	</Layout>
 )
 
-const Content = styled.section`
+const ContentSection = styled.section`
+	grid-area: content;
 	width: 100%;
 	height: 100%;
 	padding: 2rem;

@@ -5,31 +5,32 @@ import { SearchIcon } from '../Icons'
 
 export const Searchbar = () => {
   return (
-		<Wrapper>
+		<SearchSection>
 			<SearchIcon fill={'#fff'} />
-			<Input type="text" name="search" placeholder="Search" />
-		</Wrapper>
-  )
+			<Input type='text' name='search' placeholder='Search' />
+		</SearchSection>
+	)
 }
 
-const Wrapper = styled.div`
+const SearchSection = styled.section`
+	grid-area: search;
 	display: flex;
 	align-items: center;
 	width: 100%;
 	height: 60%;
 	padding: 0 10px;
-	color: white;
-	background: #43497e;
+	margin: auto 0;
 	border-radius: 5px;
+	background: #43497e;
 `
 
 const Input = styled.input`
-	background: #43497e;
 	width: 100%;
 	height: 100%;
 	border: none;
-	color: #fff;
 	margin-left: 10px;
+	color: white;
+	background: #43497e;
 
 	&::placeholder {
 		color: #fff;

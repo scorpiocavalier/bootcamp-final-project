@@ -1,42 +1,43 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import { StoreIcon } from '../Icons'
 
 export const Menu = () => {
-	const [active, setActive] = useState(false)
-	const toggleMenu = () => setActive(!active)
-	const dropdownRef = useRef(null)
-	// const { state } = useShopContext();
-	// const { cart, currentUser, signedIn } = state;
-	// useClickOutside(dropdownRef, setActive);
+	const [isDropped, setIsDropped] = useState(false)
+	const toggleMenu = () => setIsDropped(!isDropped)
 
 	return (
-		<Wrapper ref={dropdownRef}>
+		<MenuSection>
 			<Brand>
 				<StoreIcon fill={'#fff'} size={'1.5rem'} />
 				<BrandName>Simplify</BrandName>
 			</Brand>
-			<BurgerMenu onClick={toggleMenu}>
-				<BurgerLine1 active={active} />
-				<BurgerLine2 active={active} />
-				<BurgerLine3 active={active} />
-			</BurgerMenu>
-			<NavLinks onClick={toggleMenu} active={active}>
+			<Burger onClick={toggleMenu}>
+				<BurgerLine1 isDropped={isDropped} />
+				<BurgerLine2 isDropped={isDropped} />
+				<BurgerLine3 isDropped={isDropped} />
+			</Burger>
+			<Dropdown onClick={toggleMenu} isDropped={isDropped}>
 				<DropdownLink to='/'>Home</DropdownLink>
-				<DropdownLink to='/'>Orders</DropdownLink>
-				<DropdownLink to='/'>Products</DropdownLink>
-				<DropdownLink to='/'>Customers</DropdownLink>
-				<DropdownLink to='/'>Analytics</DropdownLink>
-			</NavLinks>
-		</Wrapper>
+				<DropdownLink to='/orders'>Orders</DropdownLink>
+				<DropdownLink to='/products'>Products</DropdownLink>
+				<DropdownLink to='/customers'>Customers</DropdownLink>
+				<DropdownLink to='/analytics'>Analytics</DropdownLink>
+			</Dropdown>
+		</MenuSection>
 	)
 }
 
-const Wrapper = styled.div`
-	height: 100%;
-	width: 100%;
+const MenuSection = styled.section`
+	grid-area: menu;
+
+	@media (min-width: 768px) {
+		width: 100%;
+		height: 100%;
+		padding-left: 2rem;
+	}
 `
 
 const Brand = styled.span`
@@ -55,7 +56,7 @@ const BrandName = styled.span`
 	margin-left: 0.8rem;
 `
 
-const BurgerMenu = styled.div`
+const Burger = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -78,28 +79,27 @@ const BurgerLine = styled.div`
 
 const BurgerLine1 = styled(BurgerLine)`
 	transform-origin: top left;
-	transform: ${p => p.active && 'rotate(45deg)'};
+	transform: ${p => p.isDropped && 'rotate(45deg)'};
 `
 
 const BurgerLine2 = styled(BurgerLine)`
-	transform: ${p => p.active && 'translateX(-200%)'};
-	opacity: ${p => (p.active ? 0 : 1)};
+	transform: ${p => p.isDropped && 'translateX(-200%)'};
+	opacity: ${p => (p.isDropped ? 0 : 1)};
 `
 
 const BurgerLine3 = styled(BurgerLine)`
 	transform-origin: bottom left;
-	transform: ${p => p.active && 'rotate(-45deg)'};
+	transform: ${p => p.isDropped && 'rotate(-45deg)'};
 `
 
-const NavLinks = styled.div`
-	display: ${p => (p.active ? 'flex' : 'none')};
+const Dropdown = styled.div`
+	display: ${p => (p.isDropped ? 'flex' : 'none')};
 	flex-direction: column;
 	position: absolute;
 	top: 8vh;
-	left: 0;
 	width: 100%;
 	background: rgba(28, 34, 96, 0.8);
-	opacity: ${p => (p.active ? 1 : 0)};
+	opacity: ${p => (p.isDropped ? 1 : 0)};
 	transition: all 0.2s linear;
 
 	@media (min-width: 768px) {
@@ -115,6 +115,7 @@ const DropdownLink = styled(Link)`
 	width: 100%;
 	color: #fff;
 	font-size: 18px;
+
 	&:active,
 	&:visited {
 		color: #fff;

@@ -11,7 +11,7 @@ import {
 
 export const Sidebar = () => {
   return (
-		<List>
+		<SidebarSection>
 			<ListItem>
 				<HomeIcon />
 				<Span>Home</Span>
@@ -32,16 +32,22 @@ export const Sidebar = () => {
 				<AnalyticsIcon />
 				<Span>Analytics</Span>
 			</ListItem>
-		</List>
+		</SidebarSection>
 	)
 }
 
-const List = styled.ul`
-  display: flex;
-  flex-direction: column;
-	padding-top: 1rem;
-  width: 100%;
-  height: 100%;
+const SidebarSection = styled.ul`
+	grid-area: sidebar;
+	display: none;
+
+	@media (min-width: 768px) {
+		display: flex;
+		flex-direction: column;
+		padding-top: 1rem;
+		width: 100%;
+		height: 100%;
+		border-right: 2px solid #ccc;
+	}
 `
 
 const ListItem = styled.li`
@@ -49,9 +55,6 @@ const ListItem = styled.li`
   align-items: center;
   height: 50px;
   padding-left: 2rem;
-  /* background: darkslateblue; */
-  /* color: white; */
-  /* border-bottom: 1px solid #ccc; */
 `
 
 const Span = styled.span`
