@@ -23,6 +23,10 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     margin: 0;
+
+    &:link, &:active, &:visited {
+      color: black;
+    }
   }
 
   li {

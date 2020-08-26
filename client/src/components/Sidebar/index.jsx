@@ -13,46 +13,36 @@ import {
 export const Sidebar = () => {
 	return (
 		<SidebarSection>
-			<ListItem>
-				<HomeIcon />
-				<Span>
-					<Link to='/'>
-						Home
-					</Link>
-				</Span>
-			</ListItem>
-			<ListItem>
-				<OrdersIcon />
-				<Span>
-					<Link to='orders'>
-						Orders
-					</Link>
-				</Span>
-			</ListItem>
-			<ListItem>
-				<ProductsIcon />
-				<Span>
-					<Link to='products'>
-						Products
-					</Link>
-				</Span>
-			</ListItem>
-			<ListItem>
-				<CustomersIcon />
-				<Span>
-					<Link to='customers'>
-						Customers
-					</Link>
-				</Span>
-			</ListItem>
-			<ListItem>
-				<AnalyticsIcon />
-				<Span>
-					<Link to='analytics'>
-						Analytics
-					</Link>
-				</Span>
-			</ListItem>
+			<Link to='/'>
+				<ListItem>
+					<HomeIcon />
+					<Title>Home</Title>
+				</ListItem>
+			</Link>
+			<Link to='orders'>
+				<ListItem>
+					<OrdersIcon />
+					<Title>Orders</Title>
+				</ListItem>
+			</Link>
+			<Link to='products'>
+				<ListItem>
+					<ProductsIcon />
+					<Title>Products</Title>
+				</ListItem>
+			</Link>
+			<Link to='customers'>
+				<ListItem>
+					<CustomersIcon />
+					<Title>Customers</Title>
+				</ListItem>
+			</Link>
+			<Link to='analytics'>
+				<ListItem>
+					<AnalyticsIcon />
+					<Title>Analytics</Title>
+				</ListItem>
+			</Link>
 		</SidebarSection>
 	)
 }
@@ -75,9 +65,19 @@ const ListItem = styled.li`
 	display: flex;
 	align-items: center;
 	height: 50px;
-	padding-left: 2rem;
+	padding: 0 1rem;
 `
 
-const Span = styled.span`
-	margin-left: 0.8rem;
+const Title = styled.span`
+	display: none;
+
+	@media (max-width: 1024px) {
+		display: flex;
+		margin-left: 0.8rem;
+	}
+
+	@media (min-width: 1130px) {
+		display: flex;
+		margin-left: 0.8rem;
+	}
 `

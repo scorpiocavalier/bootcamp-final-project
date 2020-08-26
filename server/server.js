@@ -32,13 +32,15 @@ app.use(
         _id: ID,
         name: String!,
         itemCode: String!,
-        price: Float!
+        price: Float!,
+        stock: [Int!]!
       }
 
       input ProductInput {
         name: String!
         itemCode: String!
         price: Float!
+        stock: [Int!]!
       }
 
       type RootQuery {
@@ -75,6 +77,7 @@ app.use(
           name: args.productInput.name,
           itemCode: args.productInput.itemCode,
           price: +args.productInput.price,
+          stock: args.productInput.stock
         })
 
         // add to db
