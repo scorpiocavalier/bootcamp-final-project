@@ -1,12 +1,20 @@
 import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Layout } from './Layout'
+import { Products } from './Content/Products'
 
 export default () => (
-	<Layout>
-		<ContentSection>Content Area</ContentSection>
-	</Layout>
+	<Router>
+		<Layout>
+			<ContentSection>
+				<Route exact path='/products'>
+					<Products />
+				</Route>
+			</ContentSection>
+		</Layout>
+	</Router>
 )
 
 const ContentSection = styled.section`

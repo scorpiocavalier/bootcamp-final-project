@@ -46,7 +46,7 @@ app.use(
       }
 
       type RootMutation {
-        createProduct(productInput: ProductInput): Product
+        addProduct(productInput: ProductInput): Product
       }
 
       schema {
@@ -70,7 +70,7 @@ app.use(
             throw err
           })
       },
-      createProduct: (args) => {
+      addProduct: (args) => {
         const product = new Product({
           name: args.productInput.name,
           itemCode: args.productInput.itemCode,

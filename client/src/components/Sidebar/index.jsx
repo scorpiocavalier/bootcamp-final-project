@@ -1,36 +1,57 @@
 import React from 'react'
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 import {
-  HomeIcon,
-  OrdersIcon,
-  ProductsIcon,
-  CustomersIcon,
-  AnalyticsIcon,
+	HomeIcon,
+	OrdersIcon,
+	ProductsIcon,
+	CustomersIcon,
+	AnalyticsIcon,
 } from '../Icons'
 
 export const Sidebar = () => {
-  return (
+	return (
 		<SidebarSection>
 			<ListItem>
 				<HomeIcon />
-				<Span>Home</Span>
+				<Span>
+					<Link to='/'>
+						Home
+					</Link>
+				</Span>
 			</ListItem>
 			<ListItem>
 				<OrdersIcon />
-				<Span>Orders</Span>
+				<Span>
+					<Link to='orders'>
+						Orders
+					</Link>
+				</Span>
 			</ListItem>
 			<ListItem>
 				<ProductsIcon />
-				<Span>Products</Span>
+				<Span>
+					<Link to='products'>
+						Products
+					</Link>
+				</Span>
 			</ListItem>
 			<ListItem>
 				<CustomersIcon />
-				<Span>Customers</Span>
+				<Span>
+					<Link to='customers'>
+						Customers
+					</Link>
+				</Span>
 			</ListItem>
 			<ListItem>
 				<AnalyticsIcon />
-				<Span>Analytics</Span>
+				<Span>
+					<Link to='analytics'>
+						Analytics
+					</Link>
+				</Span>
 			</ListItem>
 		</SidebarSection>
 	)
@@ -51,12 +72,12 @@ const SidebarSection = styled.ul`
 `
 
 const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  height: 50px;
-  padding-left: 2rem;
+	display: flex;
+	align-items: center;
+	height: 50px;
+	padding-left: 2rem;
 `
 
 const Span = styled.span`
-  margin-left: 0.8rem;
+	margin-left: 0.8rem;
 `
