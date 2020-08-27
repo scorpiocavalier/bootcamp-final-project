@@ -29,7 +29,7 @@ export const Profile = () => {
 			) : (
 				<>
 					<DropdownTrigger onClick={toggle}>
-						<ProfileIcon fill={'#fff'} size={'1.8rem'} />
+						<ProfileIcon fill={'#fff'} size={'2rem'} />
 					</DropdownTrigger>
 
 					<Dropdown isDropped={isDropped}>

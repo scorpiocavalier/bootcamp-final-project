@@ -197,7 +197,7 @@ const InputWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	@media (min-width: 1024px) {
+	@media (min-width: 768px) {
 		display: grid;
 		grid-template-areas: 'input-item-code input-price input-name';
 	}

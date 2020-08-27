@@ -8,6 +8,7 @@ import {
 	ProductsIcon,
 	CustomersIcon,
 	AnalyticsIcon,
+	SettingsIcon,
 } from '../Icons'
 
 export const Sidebar = () => {
@@ -43,6 +44,12 @@ export const Sidebar = () => {
 					<Title>Analytics</Title>
 				</ListItem>
 			</Link>
+			<Link to='settings'>
+				<ListItem>
+					<SettingsIcon />
+					<Title>Settings</Title>
+				</ListItem>
+			</Link>
 		</SidebarSection>
 	)
 }
@@ -54,27 +61,29 @@ const SidebarSection = styled.ul`
 	@media (min-width: 768px) {
 		display: flex;
 		flex-direction: column;
-		padding-top: 1rem;
+		padding: 1rem 0;
 		width: 100%;
-		height: 100%;
+		min-height: 92vh;
 		border-right: 2px solid #ccc;
 	}
 `
 
 const ListItem = styled.li`
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	height: 50px;
-	padding: 0 1rem;
+	width: 100%;
+
+	@media (min-width: 1130px) {
+		justify-content: flex-start;
+		width: 130px;
+		margin: 0 auto;
+	}
 `
 
 const Title = styled.span`
 	display: none;
-
-	@media (max-width: 1024px) {
-		display: flex;
-		margin-left: 0.8rem;
-	}
 
 	@media (min-width: 1130px) {
 		display: flex;

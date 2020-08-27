@@ -11,7 +11,7 @@ export const Menu = () => {
 	return (
 		<MenuSection>
 			<Brand>
-				<StoreIcon fill={'#fff'} size={'1.5rem'} />
+				<StoreIcon fill={'#fff'} size={'1.9rem'} />
 				<BrandName>Simplify</BrandName>
 			</Brand>
 			<Burger onClick={toggleMenu}>

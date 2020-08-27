@@ -21,14 +21,14 @@ export const Layout = ({ children }) => {
 
 const Grid = styled.div`
 	display: grid;
-	grid-template-rows: 8vh 92vh;
+	grid-template-rows: 8vh auto;
 	grid-template-columns: 1fr;
 	grid-template-areas:
 		'nav'
 		'content';
 
 	@media (min-width: 768px) {
-		grid-template-columns: 1fr 3fr;
+		grid-template-columns: 1fr 10fr;
 		grid-template-areas:
 			'nav nav'
 			'sidebar content';

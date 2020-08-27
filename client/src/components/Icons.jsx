@@ -11,6 +11,7 @@ import {
 	ProductsMajorMonotone,
 	CustomersMajorMonotone,
 	AnalyticsMajorMonotone,
+	SettingsMajorMonotone,
 } from '@shopify/polaris-icons'
 
 const StyledIcon = ({ fill, size, source }) => (
@@ -55,9 +56,13 @@ export const AnalyticsIcon = ({ fill, size }) => (
 	<StyledIcon fill={fill} size={size} source={AnalyticsMajorMonotone} />
 )
 
+export const SettingsIcon = ({ fill, size }) => (
+	<StyledIcon fill={fill} size={size} source={SettingsMajorMonotone} />
+)
+
 const Span = styled.span`
 	display: block;
-	width: ${({ size }) => (size ? size : '1.2rem')};
-	height: ${({ size }) => (size ? size : '1.2rem')};
+	width: ${({ size }) => (size ? size : '1.5rem')};
+	height: ${({ size }) => (size ? size : '1.5rem')};
 	fill: ${({ fill }) => fill};
 `
