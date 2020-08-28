@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
-import { Modal } from '../../Modal'
-import { AddRemoveStores } from './AddRemoveStores'
+import { Context } from '../../../Context'
+import { ButtonModal } from '../../Modal/ButtonModal'
+import { AddRemove } from './AddRemove'
 
 export const Settings = () => {
-	const [isOpen, setIsOpen] = useState(false)
-
-  const toggleModal = () => setIsOpen(!isOpen)
-	const onClose = () => setIsOpen(false)
+	const {
+		state: { stores, products },
+		actions: [setStores, setProducts],
+	} = useContext(Context)
 
 	return (
 		<MainWrapper>
-			<Button onClick={toggleModal}>Add / Remove Stores</Button>
-      <Modal title={'Add / Remove Stores'} isOpen={isOpen} onClose={onClose}>
-				<AddRemoveStores />
-			</Modal>
+			<ButtonModal title={'Add / Remove Stores'}>
+				<AddRemove initialState={stores} setGlobal={setStores} />
+			</ButtonModal>
+			<ButtonModal title={'Add / Remove Products'}>
+				<AddRemove initialState={products} setGlobal={setProducts} />
+			</ButtonModal>
 		</MainWrapper>
 	)
 }
@@ -23,13 +26,4 @@ export const Settings = () => {
 const MainWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-`
-
-const Button = styled.button`
-	padding: 0.8rem;
-	margin-top: 10px;
-	margin-right: 10px;
-	border-radius: 5px;
-	background: #43497e;
-	color: white;
 `

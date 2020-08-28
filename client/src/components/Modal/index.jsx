@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ReactDom from 'react-dom'
 
-import { CloseIcon } from './Icons'
+import { CloseIcon } from '../Icons'
 
 export const Modal = ({ children, title, isOpen, onClose }) => {
 	if (!isOpen) return null
@@ -52,6 +52,10 @@ const IconWrapper = styled.div`
 	right: -10px;
 	background: #f4f6f8;
 	border-radius: 50%;
+
+	&:hover {
+		cursor: pointer;
+	}
 `
 
 const ContentWrapper = styled.div`
