@@ -8,7 +8,7 @@ import { Orders } from './Content/Orders'
 import { Products } from './Content/Products'
 import { Customers } from './Content/Customers'
 import { Analytics } from './Content/Analytics'
-import { Settings } from './Content/Settings'
+import { Settings } from './Content/Settings/'
 
 export default () => (
 	<Router>

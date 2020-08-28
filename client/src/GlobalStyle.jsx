@@ -37,5 +37,9 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     border-radius: 5px;
     background: none;
+
+    &:hover {
+		  cursor: pointer;
+	  }
   }
 `

@@ -12,6 +12,8 @@ import {
 	CustomersMajorMonotone,
 	AnalyticsMajorMonotone,
 	SettingsMajorMonotone,
+	DeleteMajorMonotone,
+	CircleCancelMajorMonotone,
 } from '@shopify/polaris-icons'
 
 const StyledIcon = ({ fill, size, source }) => (
@@ -58,6 +60,14 @@ export const AnalyticsIcon = ({ fill, size }) => (
 
 export const SettingsIcon = ({ fill, size }) => (
 	<StyledIcon fill={fill} size={size} source={SettingsMajorMonotone} />
+)
+
+export const DeleteIcon = ({ fill, size }) => (
+	<StyledIcon fill={fill} size={size} source={DeleteMajorMonotone} />
+)
+
+export const CloseIcon = ({ fill, size }) => (
+	<StyledIcon fill={fill} size={size} source={CircleCancelMajorMonotone} />
 )
 
 const Span = styled.span`
