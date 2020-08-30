@@ -7,7 +7,7 @@ const initialState = {
 
 const ACTIONS = {
 	SET_STORES: 'set_stores',
-	SET_PRODCUTS: 'set_products'
+	SET_PRODCUTS: 'set_products',
 }
 
 const reducer = (state, action) => {
@@ -25,15 +25,18 @@ const reducer = (state, action) => {
 
 export const Context = createContext()
 
-export const Provider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 
-	const setStores = (payload) => dispatch({ type: ACTIONS.SET_STORES, payload })
-	const setProducts = (payload) => dispatch({ type: ACTIONS.SET_PRODCUTS, payload })
+	const setStores = payload => dispatch({ type: ACTIONS.SET_STORES, payload })
+	const setProducts = payload =>
+		dispatch({ type: ACTIONS.SET_PRODCUTS, payload })
 
 	const actions = [setStores, setProducts]
 
 	return (
-		<Context.Provider value={{ state, actions, ACTIONS }}>{children}</Context.Provider>
+		<Context.Provider value={{ state, actions, ACTIONS }}>
+			{children}
+		</Context.Provider>
 	)
 }
