@@ -43,12 +43,10 @@ export const resolvers = {
   Mutation: {
     // Add a single store
     addStore: async ( parent, args, context, info ) => {
-      const newStore = new Store( {
-        location: args.store.location,
-        products: []
-      } )
+      const { location, products } = args.store
+      const newStore = new Store( { location, products } )
 
-      newStore.save( ( err ) => {
+      newStore.save( err => {
         err
           ? console.error( err )
           : console.log( 'New store added successfully!' )
@@ -56,5 +54,15 @@ export const resolvers = {
     },
 
     // Add a single product
+    addProduct: async ( parent, args, context, info ) => {
+      const { name, itemCode, price, stockLevel } = args.product
+      const newProduct = new Product( { name, itemCode, price, stockLevel } )
+
+      newProduct.save( err => {
+        err
+          ? console.error( err )
+          : console.log( 'New product added successfully!' )
+      } )
+    }
   }
 }
