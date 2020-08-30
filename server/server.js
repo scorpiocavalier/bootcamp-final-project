@@ -19,10 +19,6 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 // Setup graphql
 app.use(
   '/graphql',
@@ -36,6 +32,11 @@ app.use(
         stock: [Int!]!
       }
 
+      type Store {
+        _id: ID,
+        name: String!
+      }
+
       input ProductInput {
         name: String!
         itemCode: String!
@@ -43,12 +44,18 @@ app.use(
         stock: [Int!]!
       }
 
+      input StoreInput {
+        name: String!
+      }
+
       type RootQuery {
         products: [Product!]!
+        stores: [Store!]!
       }
 
       type RootMutation {
         addProduct(productInput: ProductInput): Product
+        setStores(storeInput: StoreInput): [Store]
       }
 
       schema {

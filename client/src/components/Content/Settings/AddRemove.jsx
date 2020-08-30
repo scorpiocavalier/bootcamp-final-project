@@ -29,28 +29,26 @@ export const AddRemove = ({ initialState, setGlobal }) => {
 		}
 	}
 
-  const remove = index => {
-    state.splice(index, 1)
-    setState([...state])
-  }
+	const remove = index => {
+		state.splice(index, 1)
+		setState([...state])
+	}
 
-  console.log('state', state)
+	console.log('state', state)
 
 	return (
 		<MainWrapper>
-			{state.map((element, index) => {
-				return (
-					<InputWrapper key={index}>
-						<Input
-							value={element}
-							onChange={event => handleChange(event, index)}
-						/>
-						<IconWrapper onClick={() => remove(index)}>
-							<DeleteIcon />
-						</IconWrapper>
-					</InputWrapper>
-				)
-			})}
+			{state.map((element, index) => (
+				<InputWrapper key={index}>
+					<Input
+						value={element}
+						onChange={event => handleChange(event, index)}
+					/>
+					<IconWrapper onClick={() => remove(index)}>
+						<DeleteIcon />
+					</IconWrapper>
+				</InputWrapper>
+			))}
 			<ButtonsWrapper>
 				<Button onClick={addInput}>Add</Button>
 				<Button onClick={save}>Save</Button>
