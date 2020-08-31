@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { DeleteIcon } from '../../Icons'
+import { DeleteIcon } from '../../Utilities/Icons/index'
 
 export const AddRemove = ({ initialState, setGlobal }) => {
 	const [state, setState] = useState([...initialState])

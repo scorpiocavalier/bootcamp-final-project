@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useAuth0 } from '@auth0/auth0-react'
 
-import { ProfileIcon } from '../Icons'
+import { ProfileIcon } from '../Utilities/Icons/index'
 
 export const Profile = () => {
 	const [isDropped, setIsDropped] = useState(false)

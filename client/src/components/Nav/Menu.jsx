@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { StoreIcon } from '../Icons'
+import { StoreIcon } from '../Utilities/Icons/index'
 
 export const Menu = () => {
 	const [isDropped, setIsDropped] = useState(false)

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { Context } from '../../../Context'
-import { ButtonModal } from '../../Modal/ButtonModal'
+import { ButtonModal } from '../../Utilities/Modal/ButtonModal'
 import { AddRemove } from './AddRemove'
 
 export const Settings = () => {

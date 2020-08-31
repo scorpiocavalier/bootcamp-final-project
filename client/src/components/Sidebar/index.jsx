@@ -9,7 +9,7 @@ import {
 	CustomersIcon,
 	AnalyticsIcon,
 	SettingsIcon,
-} from '../Icons'
+} from '../Utilities/Icons/index'
 
 export const Sidebar = () => {
 	return (
