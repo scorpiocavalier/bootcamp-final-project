@@ -6,10 +6,22 @@ import { ProductList } from './ProductList'
 export const Products = () => {
 	return (
 		<MainWrapper>
-			<AllProducts>
-				<SectionTitle>All Products</SectionTitle>
-				<ProductList />
-			</AllProducts>
+			<Title>All Products</Title>
+			<Actions>
+				<Input placeholder='Item Code' />
+				<Input placeholder='Name' />
+				<Input placeholder='Price' />
+				<Button color={'#43497e'} hoverColor={'#1c2260'}>
+					Add
+				</Button>
+				<Button color={'#43497e'} hoverColor={'darkorange'}>
+					Edit
+				</Button>
+				<Button color={'#43497e'} hoverColor={'darkred'}>
+					Delete
+				</Button>
+			</Actions>
+			<ProductList />
 		</MainWrapper>
 	)
 }
@@ -19,14 +31,28 @@ const MainWrapper = styled.div`
 	flex-direction: column;
 `
 
-const Wrapper = styled(MainWrapper)`
-	padding: 1rem;
-	border: 2px solid #1c2260;
-	margin-bottom: 1rem;
+const Title = styled.h3`
+	grid-area: title;
 `
 
-const AllProducts = styled(Wrapper)``
+const Actions = styled.div`
+	padding: 10px 0;
+`
 
-const SectionTitle = styled.h3`
-	grid-area: title;
+const Input = styled.input`
+	margin-right: 10px;
+	height: 2rem;
+	padding: 5px;
+`
+
+const Button = styled.button`
+	margin-right: 10px;
+	height: 2rem;
+	padding: 5px 15px;
+	background: ${p => p.color};
+	color: white;
+
+	&:hover {
+		background: ${p => p.hoverColor};
+	}
 `
