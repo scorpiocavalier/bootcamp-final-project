@@ -12,7 +12,7 @@ export const typeDefs = gql`
   type Store {
     _id: ID
     location: String!
-    products: [Product!]!
+    # products: [Product!]!
   }
 
   type Product {
@@ -20,7 +20,7 @@ export const typeDefs = gql`
     name: String!
     itemCode: String!
     price: Float!
-    stockLevel: [StoreStock!]!
+    # stockLevel: [StoreStock!]!
   }
 
   type StoreStock {
@@ -31,20 +31,20 @@ export const typeDefs = gql`
 
   # Inputs -------------------------------------------
   input storeInput {
-    location: String
-    products: [productInput]
+    location: String!
+    # products: [productInput!]!
   }
 
   input productInput {
-    name: String
-    itemCode: String
-    price: Float
-    stockLevel: [storeStockInput]
+    name: String!
+    itemCode: String!
+    price: Float!
+    # stockLevel: [storeStockInput!]!
   }
 
   input storeStockInput {
-    store: storeInput
-    quantity: Int
+    store: storeInput!
+    quantity: Int!
   }
 
   # Mutations ----------------------------------------

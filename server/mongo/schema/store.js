@@ -5,10 +5,10 @@ const storeSchema = new Schema({
     type: String,
     required: true,
   },
-  products: {
-    type: Array,
-    required: false,
-  }
+  // products: {
+  //   type: Array,
+  //   required: false,
+  // }
 })
 
 export const Store = model('Store', storeSchema, 'stores')

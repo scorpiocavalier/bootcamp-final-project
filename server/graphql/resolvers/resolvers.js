@@ -5,7 +5,8 @@ export const resolvers = {
   Query: {
     // Fetch a single store
     store: async ( parent, args, context, info ) => {
-      const store = await Store.findOne( { location: args.location } )
+      const { location } = args
+      const store = await Store.findOne( { location } )
       console.log( 'store', store )
 
       return { ...store._doc, _id: store.id }
@@ -23,7 +24,8 @@ export const resolvers = {
 
     // Fetch a single product
     product: async ( parent, args, context, info ) => {
-      const product = await Product.findOne( { itemCode: args.itemCode } )
+      const { itemCode } = args
+      const product = await Product.findOne( { itemCode } )
       console.log( 'product', product )
 
       return { ...product._doc, _id: product.id }
@@ -43,26 +45,30 @@ export const resolvers = {
   Mutation: {
     // Add a single store
     addStore: async ( parent, args, context, info ) => {
-      const { location, products } = args.store
-      const newStore = new Store( { location, products } )
+      const { location } = args.store
+      const newStore = new Store( { location } )
 
       newStore.save( err => {
         err
           ? console.error( err )
-          : console.log( 'New store added successfully!' )
+          : console.log( `${ location } store was added successfully!` )
       } )
+
+      return newStore
     },
 
     // Add a single product
     addProduct: async ( parent, args, context, info ) => {
-      const { name, itemCode, price, stockLevel } = args.product
-      const newProduct = new Product( { name, itemCode, price, stockLevel } )
+      const { name, itemCode, price } = args.product
+      const newProduct = new Product( { name, itemCode, price } )
 
       newProduct.save( err => {
         err
           ? console.error( err )
-          : console.log( 'New product added successfully!' )
+          : console.log( `${ name } was added successfully!` )
       } )
+
+      return newProduct
     }
   }
 }
