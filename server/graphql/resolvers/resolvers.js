@@ -43,32 +43,53 @@ export const resolvers = {
   },
 
   Mutation: {
-    // Add a single store
+    // Add a single store.
     addStore: async ( parent, args, context, info ) => {
       const { location } = args.store
-      const newStore = new Store( { location } )
 
-      newStore.save( err => {
-        err
-          ? console.error( err )
-          : console.log( `${ location } store was added successfully!` )
-      } )
+      // Check if store already exists.
+      const found = await Store.findOne( { location } )
 
-      return newStore
+      // Add to database if it doesn't exist.
+      if ( !found ) {
+        const newStore = new Store( { location } )
+
+        newStore.save( err => {
+          err
+            ? console.error( err )
+            : console.log( `${ location } store was added successfully!` )
+        } )
+        return newStore
+      } else {
+        console.log( `${ location } store already exists.` )
+
+        return found
+      }
     },
 
-    // Add a single product
+    // Add a single product.
     addProduct: async ( parent, args, context, info ) => {
       const { name, itemCode, price } = args.product
-      const newProduct = new Product( { name, itemCode, price } )
 
-      newProduct.save( err => {
-        err
-          ? console.error( err )
-          : console.log( `${ name } was added successfully!` )
-      } )
+      // Check if product already exists.
+      const found = await Product.findOne( { itemCode } )
 
-      return newProduct
+      // Add to database if it doesn't exist.
+      if ( !found ) {
+        const newProduct = new Product( { name, itemCode, price } )
+
+        newProduct.save( err => {
+          err
+            ? console.error( err )
+            : console.log( `${ name } was added successfully!` )
+        } )
+
+        return newProduct
+      } else {
+        console.log( `${ name } already exists.` )
+
+        return found
+      }
     }
   }
 }
