@@ -3,10 +3,6 @@ import styled from 'styled-components'
 import { useQuery } from '@apollo/client'
 
 import {
-	// getStore,
-	getStores,
-	// getProduct,
-	getProducts,
 	getStoresAndProducts,
 } from '../../../graphql/Queries/product_queries'
 
@@ -26,8 +22,9 @@ export const ProductList = () => {
 	}
 
 	// Keep for optimization opportunity
-	console.count('ProductList')
-	console.log('data', data)
+	console.count( 'ProductList' )
+
+	// Destructuring only after it passes loading and error
 	const { stores, products } = data
 
 	return (

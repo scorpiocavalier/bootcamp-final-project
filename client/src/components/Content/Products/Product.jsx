@@ -2,35 +2,32 @@ import React from 'react'
 import styled from 'styled-components'
 
 export const Product = ( { product, stores } ) => {
-  console.log( 'stores', stores )
-  console.log('product', product)
-
 	return (
 		<ProductWrapper>
-			<Headers_1>
+			<HeadersOne>
 				<HeaderItemCode>Item Code</HeaderItemCode>
 				<HeaderName>Name</HeaderName>
 				<HeaderPrice>Price</HeaderPrice>
-			</Headers_1>
+			</HeadersOne>
 
-			<Item_1>
+			<ItemOne>
 				<ItemCode>{product.itemCode}</ItemCode>
 				<Name>{product.name}</Name>
 				<Price>$ {product.price}</Price>
-			</Item_1>
+			</ItemOne>
 
-			<Headers_2>
+			<HeadersTwo>
 				{stores.map((store, index) => (
 					<HeaderStore key={index}>{store.location}</HeaderStore>
 				))}
-			</Headers_2>
+			</HeadersTwo>
 
-      <Item_2>
+      <ItemTwo>
         {/* TODO: StoreStock */}
 				{stores.map((store, index) => (
 					<Store key={store + index}>{index}</Store>
 				))}
-			</Item_2>
+			</ItemTwo>
 		</ProductWrapper>
 	)
 }
@@ -67,7 +64,7 @@ const Headers = styled.div`
 	}
 `
 
-const Headers_1 = styled(Headers)`
+const HeadersOne = styled(Headers)`
 	grid-area: headers-1;
 	display: grid;
 	grid-template-columns: minmax(120px, 1fr) minmax(200px, 10fr) minmax(
@@ -77,7 +74,7 @@ const Headers_1 = styled(Headers)`
 	grid-template-areas: 'header-item-code header-name header-price';
 `
 
-const Headers_2 = styled(Headers)`
+const HeadersTwo = styled(Headers)`
 	grid-area: headers-2;
 `
 
@@ -114,7 +111,7 @@ const Item = styled.div`
 	}
 `
 
-const Item_1 = styled(Item)`
+const ItemOne = styled(Item)`
 	grid-area: item-1;
 	display: grid;
 	grid-template-columns: minmax(120px, 1fr) minmax(200px, 10fr) minmax(
@@ -124,7 +121,7 @@ const Item_1 = styled(Item)`
 	grid-template-areas: 'item-code name price';
 `
 
-const Item_2 = styled(Item)`
+const ItemTwo = styled(Item)`
 	grid-area: item-2;
 `
 
