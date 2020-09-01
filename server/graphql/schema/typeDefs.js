@@ -5,6 +5,7 @@ export const typeDefs = gql`
   type Query {
     store(location: String!): Store!
     stores: [Store!]!
+    
     product(itemCode: String!): Product!
     products: [Product!]!
   }
@@ -52,7 +53,11 @@ export const typeDefs = gql`
   # Mutations ----------------------------------------
   type Mutation {
     addStore(store: storeInput) : Store
+    updateStore(store: storeInput) : Store
+    deleteStore(location: String) : Store
+
     addProduct(product: productInput) : Product
+    updateProduct(product: productInput) : Product
     deleteProduct(itemCode: String) : Product
   }
 `

@@ -67,10 +67,41 @@ export const resolvers = {
       }
     },
 
+    // Update a single store.
+    updateStore: async ( parent, args, context, info ) => {
+      const { location } = args.store
+
+      // Find and update the store.
+      const updatedStore = await Store.findOneAndUpdate(
+        { location },
+        { location },
+        { new: true }
+      )
+
+      return updatedStore
+    },
+
+    // Delete a single store.
+    deleteStore: async ( parent, args, context, info ) => {
+      const { location } = args
+
+      // Delete store from database
+      Store.findOneAndDelete( { location }, ( err, res ) => {
+        if ( err ) {
+          console.error( err )
+        } else {
+          console.log( `${ location } has been deleted.` )
+
+          return res
+        }
+      } )
+    },
+
     // Add a single product.
     addProduct: async ( parent, args, context, info ) => {
       const { name, itemCode, description, price } = args.product
       console.log( 'args.product', args.product )
+
       // Check if product already exists.
       const found = await Product.findOne( { itemCode } )
 
@@ -94,6 +125,21 @@ export const resolvers = {
       }
     },
 
+    // Update a single product
+    updateProduct: async ( parent, args, context, info ) => {
+      const { name, itemCode, description, price } = args.product
+      console.log( 'args.product', args.product )
+
+      // Find and update the product
+      const updatedProduct = Product.findOneAndUpdate(
+        { itemCode },
+        { name, itemCode, description, price },
+        { new: true }
+      )
+
+      return updatedProduct
+    },
+
     // Delete a single product
     deleteProduct: async ( parent, args, context, info ) => {
       const { itemCode } = args
@@ -104,7 +150,7 @@ export const resolvers = {
           console.error( err )
         } else {
           console.log( `${ itemCode } has been deleted.` )
-          console.log( res )
+          
           return res
         }
       } )
