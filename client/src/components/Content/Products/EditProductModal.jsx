@@ -13,7 +13,6 @@ export const EditProductModal = ({ product, onClose }) => {
 	const [descInput, setDescInput] = useState(description)
 
 	const nameRef = useRef()
-	const itemCodeRef = useRef()
 	const priceRef = useRef()
 	const descRef = useRef()
 

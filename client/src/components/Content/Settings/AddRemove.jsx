@@ -1,61 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
+import { useMutation } from '@apollo/client'
 
 import { DeleteIcon } from '../../Utilities/Icons/index'
+import { ADD_STORE } from '../../../graphql/Mutations/store_mutations'
 
-export const AddRemove = ({ initialState }) => {
-	const [state, setState] = useState(initialState)
+export const AddRemove = () => {
+	const [storeInput, setStoreInput] = useState()
 	const [response, setResponse] = useState('')
 	const [responseColor, setResponseColor] = useState('')
 
-	const addInput = () => {
-		state.push({ __typename: 'Store', location: '' })
-		setState(state)
-		console.log('state', state)
-	}
+	const storeRef = useRef()
 
-	const handleChange = (event, index) => {
-		state[index].location = event.target.value
-		setState(state)
-		console.log('state', state)
-	}
+	const [addStore] = useMutation(ADD_STORE)
 
-	const save = () => {
+	const add = () => {
 		try {
-			setResponse('Saved successfully!')
+			addStore({
+				variables: {
+					location: storeRef.current.value,
+				},
+			})
+			setResponse(`${storeInput} was saved successfully!`)
 			setResponseColor('green')
 		} catch {
 			setResponse('An error has occurred.')
 			setResponseColor('red')
 		}
-		console.log('state', state)
-	}
 
-	const remove = index => {
-		state.splice(index, 1)
-		setState(state)
-		console.log('state', state)
+		setStoreInput('')
 	}
-
-	console.log('state', state)
 
 	return (
 		<MainWrapper>
-			{state.map((element, index) => (
-				<InputWrapper key={index}>
-					<Input
-						value={element.location}
-						onChange={event => handleChange(event, index)}
-					/>
-					<IconWrapper onClick={() => remove(index)}>
-						<DeleteIcon />
-					</IconWrapper>
-				</InputWrapper>
-			))}
+			<InputWrapper>
+				<Input
+					value={storeInput}
+					onChange={e => setStoreInput(e.target.value)}
+					ref={storeRef}
+				/>
+				<IconWrapper>
+					<DeleteIcon />
+				</IconWrapper>
+			</InputWrapper>
+
 			<ButtonsWrapper>
-				<Button onClick={addInput}>Add</Button>
-				<Button onClick={save}>Save</Button>
+				<Button onClick={add}>Add Store</Button>
 			</ButtonsWrapper>
+
 			<Response color={responseColor}>{response}</Response>
 		</MainWrapper>
 	)
