@@ -4,14 +4,14 @@ import { useMutation } from '@apollo/client'
 
 import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/queries'
 import { DELETE_PRODUCT } from '../../../graphql/Mutations/product_mutations'
-
+import { Modal } from '../../Utilities/Modal/index'
 import { AcceptIcon, CloseIcon } from '../../Utilities/Icons/index'
 
 export const Product = ({ product, stores }) => {
-	const [open, setOpen] = useState(false)
-	const [action, setAction] = useState('')
-	const [editPlaceholder, setEditPlaceholder] = useState('Edit')
+	const [openDetails, setOpenDetails] = useState(false)
 	const [deletePlaceholder, setDeletePlaceholder] = useState('Delete')
+	const [openEdit, setOpenEdit] = useState(false)
+	const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
 	const refetchData = {
 		refetchQueries: mutationResult => [{ query: GET_STORES_AND_PRODUCTS }],
@@ -20,35 +20,22 @@ export const Product = ({ product, stores }) => {
 
 	const [deleteProduct] = useMutation(DELETE_PRODUCT, refetchData)
 
-	const toggle = () => setOpen(!open)
+	const toggle = () => setOpenDetails(!openDetails)
 
-	const showEditModal = itemCode => {}
+	const triggerEdit = itemCode => {}
 
-	const triggerEdit = itemCode => {
-		// Accept icon
-		if (editPlaceholder instanceof Object) {
-			if (action === 'Edit') {
-				showEditModal(itemCode)
-			} else if (action === 'Delete') {
-				deleteProduct({ variables: { itemCode } })
-			}
+	const triggerDelete = () => {
+		if (deletePlaceholder instanceof Object) {
+			setShowConfirmDelete(false)
+			setDeletePlaceholder('Delete')
 		} else {
-			setAction('Edit')
-			setEditPlaceholder(<AcceptIcon fill={'white'} />)
+			setShowConfirmDelete(true)
 			setDeletePlaceholder(<CloseIcon fill={'white'} />)
 		}
 	}
 
-	const triggerDelete = () => {
-		// Close icon
-		if (deletePlaceholder instanceof Object) {
-			setEditPlaceholder('Edit')
-			setDeletePlaceholder('Delete')
-		} else {
-			setAction('Delete')
-			setEditPlaceholder(<AcceptIcon fill={'white'} />)
-			setDeletePlaceholder(<CloseIcon fill={'white'} />)
-		}
+	const confirmDelete = itemCode => {
+		deleteProduct({ variables: { itemCode } })
 	}
 
 	return (
@@ -65,23 +52,28 @@ export const Product = ({ product, stores }) => {
 				<Price>$ {product.price}</Price>
 			</ItemInfo>
 
-			<ItemDetails open={open}>
+			<ItemDetails openDetails={openDetails}>
 				<DescriptionWrapper>
 					<Description>{product.description}</Description>
 
 					<EditDelete>
-						<Button
-							color={'#43497e'}
-							hoverColor={'darkgreen'}
-							onClick={() => triggerEdit(product.itemCode)}>
-							<Text>{editPlaceholder}</Text>
-						</Button>
-						<Button
-							color={'#43497e'}
-							hoverColor={'darkred'}
-							onClick={triggerDelete}>
+						<EditButton
+							onClick={() => triggerEdit(product.itemCode)}
+							showConfirmDelete={showConfirmDelete}>
+							<Text>Edit</Text>
+						</EditButton>
+
+						<ConfirmButton
+							onClick={() => confirmDelete(product.itemCode)}
+							showConfirmDelete={showConfirmDelete}>
+							<Text>
+								<AcceptIcon fill={'white'} />
+							</Text>
+						</ConfirmButton>
+
+						<DeleteButton onClick={triggerDelete}>
 							<Text>{deletePlaceholder}</Text>
-						</Button>
+						</DeleteButton>
 					</EditDelete>
 				</DescriptionWrapper>
 
@@ -105,10 +97,10 @@ export const Product = ({ product, stores }) => {
 }
 
 const Accordion = styled.div`
-	max-height: ${p => (p.open ? '500px' : '0')};
-	opacity: ${p => (p.open ? '1' : '0')};
+	max-height: ${p => (p.openDetails ? '500px' : '0')};
+	opacity: ${p => (p.openDetails ? '1' : '0')};
 	overflow-y: hidden;
-	transition: all 0.5s ease;
+	transition: all 0.3s ease-out;
 `
 
 const ProductWrapper = styled.div`
@@ -194,7 +186,7 @@ const Price = styled(Item)`
 
 const ItemDetails = styled(Accordion)`
 	grid-area: item-details;
-	padding-bottom: ${p => (p.open ? '10px' : '0')};
+	padding-bottom: ${p => (p.openDetails ? '10px' : '0')};
 `
 
 const DescriptionWrapper = styled.div`
@@ -228,11 +220,27 @@ const Button = styled.button`
 	width: 4rem;
 	height: 35px;
 	padding: 5px 15px;
-	background: ${p => p.color};
 	color: white;
+	background: #43497e;
+`
 
+const EditButton = styled(Button)`
+	display: ${p => (p.showConfirmDelete ? 'none' : 'normal')};
 	&:hover {
-		background: ${p => p.hoverColor};
+		background: darkgreen;
+	}
+`
+
+const ConfirmButton = styled(Button)`
+	display: ${p => (p.showConfirmDelete ? 'normal' : 'none')};
+	&:hover {
+		background: darkgreen;
+	}
+`
+
+const DeleteButton = styled(Button)`
+	&:hover {
+		background: darkred;
 	}
 `
 
