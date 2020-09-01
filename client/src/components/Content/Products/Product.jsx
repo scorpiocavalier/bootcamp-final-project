@@ -1,35 +1,51 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useMutation } from '@apollo/client'
+
+import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/product_queries'
+import { DELETE_PRODUCT } from '../../../graphql/Mutations/product_mutations'
 
 import { AcceptIcon, CloseIcon } from '../../Utilities/Icons/index'
-import { isObjectType } from 'graphql'
 
 export const Product = ({ product, stores }) => {
 	const [open, setOpen] = useState(false)
+	const [action, setAction] = useState('')
 	const [editPlaceholder, setEditPlaceholder] = useState('Edit')
 	const [deletePlaceholder, setDeletePlaceholder] = useState('Delete')
 
-	const toggle = () => setOpen(!open)
-
-	const showEditModal = () => {
-
+	const refetchData = {
+		refetchQueries: mutationResult => [{ query: GET_STORES_AND_PRODUCTS }],
+		awaitRefetchQueries: true,
 	}
 
-	const editProduct = () => {
-		if ( editPlaceholder instanceof Object ) {
-			// call dispatch
+	const [deleteProduct] = useMutation(DELETE_PRODUCT, refetchData)
+
+	const toggle = () => setOpen(!open)
+
+	const showEditModal = itemCode => {}
+
+	const triggerEdit = itemCode => {
+		// Accept icon
+		if (editPlaceholder instanceof Object) {
+			if (action === 'Edit') {
+				showEditModal(itemCode)
+			} else if (action === 'Delete') {
+				deleteProduct({ variables: { itemCode } })
+			}
 		} else {
-			showEditModal()
+			setAction('Edit')
 			setEditPlaceholder(<AcceptIcon fill={'white'} />)
 			setDeletePlaceholder(<CloseIcon fill={'white'} />)
 		}
 	}
 
-	const deleteProduct = () => {
-		if ( deletePlaceholder instanceof Object ) {
+	const triggerDelete = () => {
+		// Close icon
+		if (deletePlaceholder instanceof Object) {
 			setEditPlaceholder('Edit')
-			setDeletePlaceholder( 'Delete' )
+			setDeletePlaceholder('Delete')
 		} else {
+			setAction('Delete')
 			setEditPlaceholder(<AcceptIcon fill={'white'} />)
 			setDeletePlaceholder(<CloseIcon fill={'white'} />)
 		}
@@ -62,13 +78,13 @@ export const Product = ({ product, stores }) => {
 						<Button
 							color={'#43497e'}
 							hoverColor={'darkgreen'}
-							onClick={editProduct}>
+							onClick={() => triggerEdit(product.itemCode)}>
 							<Text>{editPlaceholder}</Text>
 						</Button>
 						<Button
 							color={'#43497e'}
 							hoverColor={'darkred'}
-							onClick={deleteProduct}>
+							onClick={triggerDelete}>
 							<Text>{deletePlaceholder}</Text>
 						</Button>
 					</EditDelete>

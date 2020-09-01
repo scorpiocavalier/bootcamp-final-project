@@ -36,7 +36,7 @@ export const getProducts = gql`
   }
 `
 
-export const getStoresAndProducts = gql`
+export const GET_STORES_AND_PRODUCTS = gql`
   query {
     stores {
       location

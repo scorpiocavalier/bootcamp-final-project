@@ -2,14 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/client'
 
-import {
-	getStoresAndProducts,
-} from '../../../graphql/Queries/product_queries'
+import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/product_queries'
 
 import { Product } from './Product'
 
 export const ProductList = () => {
-	const { loading, error, data } = useQuery(getStoresAndProducts)
+	const { loading, error, data } = useQuery(GET_STORES_AND_PRODUCTS)
 
 	if (loading) {
 		console.log('Loading...')

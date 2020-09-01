@@ -90,6 +90,22 @@ export const resolvers = {
 
         return found
       }
+    },
+
+    // Delete a single product
+    deleteProduct: async ( parent, args, context, info ) => {
+      const { itemCode } = args
+
+      // Delete product from database
+      Product.findOneAndDelete( { itemCode }, ( err, res ) => {
+        if ( err ) {
+          console.error( err )
+        } else {
+          console.log( `${ itemCode } has been deleted.` )
+          console.log(res)
+          return res
+        }
+      } )
     }
   }
 }

@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
+import { useMutation } from '@apollo/client'
 
 import { ProductList } from './ProductList'
+import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/product_queries'
+import { ADD_PRODUCT } from '../../../graphql/Mutations/product_mutations'
 
 export const Products = () => {
+	const nameRef = useRef('')
+	const itemCodeRef = useRef('')
+	const priceRef = useRef('')
+
+	const refetchData = {
+		refetchQueries: mutationResult => [{ query: GET_STORES_AND_PRODUCTS }],
+		awaitRefetchQueries: true,
+	}
+
+	const [addProduct] = useMutation(ADD_PRODUCT, refetchData)
+
+	const handleAdd = () => {
+		addProduct({
+			variables: {
+				name: nameRef.current.value,
+				itemCode: itemCodeRef.current.value,
+				price: parseFloat(priceRef.current.value),
+			},
+		})
+
+		nameRef.current.value = ''
+		itemCodeRef.current.value = ''
+		priceRef.current.value = ''
+	}
+
 	return (
 		<MainWrapper>
 			<Title>All Products</Title>
 			<Actions>
-				<Input placeholder='Item Code' />
-				<Input placeholder='Name' />
-				<Input placeholder='Price' />
-				<Button color={'#43497e'} hoverColor={'#1c2260'}>
+				<Input placeholder='Item Code' ref={itemCodeRef} />
+				<Input placeholder='Name' ref={nameRef} />
+				<Input placeholder='Price' ref={priceRef} />
+				<Button color={'#43497e'} hoverColor={'#1c2260'} onClick={handleAdd}>
 					Add
 				</Button>
 			</Actions>

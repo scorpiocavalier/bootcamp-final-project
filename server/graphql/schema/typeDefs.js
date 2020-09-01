@@ -51,5 +51,6 @@ export const typeDefs = gql`
   type Mutation {
     addStore(store: storeInput) : Store
     addProduct(product: productInput) : Product
+    deleteProduct(itemCode: String) : Product
   }
 `
