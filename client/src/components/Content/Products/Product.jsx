@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { AcceptIcon, CloseIcon } from '../../Utilities/Icons/index'
+import { isObjectType } from 'graphql'
+
 export const Product = ({ product, stores }) => {
 	const [open, setOpen] = useState(false)
 	const [editPlaceholder, setEditPlaceholder] = useState('Edit')
@@ -13,30 +16,22 @@ export const Product = ({ product, stores }) => {
 	}
 
 	const editProduct = () => {
-		switch ( editPlaceholder ) {
-			case 'Edit':
-				showEditModal()
-				setEditPlaceholder('Save')
-				setDeletePlaceholder('Cancel')
-				break
-			case 'Confirm':
-				// call dispatch
-				break
-			default: return
+		if ( editPlaceholder instanceof Object ) {
+			// call dispatch
+		} else {
+			showEditModal()
+			setEditPlaceholder(<AcceptIcon fill={'white'} />)
+			setDeletePlaceholder(<CloseIcon fill={'white'} />)
 		}
 	}
 
 	const deleteProduct = () => {
-		switch (deletePlaceholder) {
-			case 'Delete':
-				setEditPlaceholder('Confirm')
-				setDeletePlaceholder('Cancel')
-				break
-			case 'Cancel':
-				setEditPlaceholder('Edit')
-				setDeletePlaceholder( 'Delete' )
-				break
-			default: return
+		if ( deletePlaceholder instanceof Object ) {
+			setEditPlaceholder('Edit')
+			setDeletePlaceholder( 'Delete' )
+		} else {
+			setEditPlaceholder(<AcceptIcon fill={'white'} />)
+			setDeletePlaceholder(<CloseIcon fill={'white'} />)
 		}
 	}
 
@@ -68,13 +63,13 @@ export const Product = ({ product, stores }) => {
 							color={'#43497e'}
 							hoverColor={'darkgreen'}
 							onClick={editProduct}>
-							{editPlaceholder}
+							<Text>{editPlaceholder}</Text>
 						</Button>
 						<Button
 							color={'#43497e'}
 							hoverColor={'darkred'}
 							onClick={deleteProduct}>
-							{deletePlaceholder}
+							<Text>{deletePlaceholder}</Text>
 						</Button>
 					</EditDelete>
 				</DescriptionWrapper>
@@ -214,8 +209,8 @@ const EditDelete = styled.div`
 
 const Button = styled.button`
 	margin: 5px 0 5px 10px;
-	width: 5rem;
-	height: 2rem;
+	width: 4rem;
+	height: 35px;
 	padding: 5px 15px;
 	background: ${p => p.color};
 	color: white;
@@ -249,3 +244,9 @@ const Store = styled.span`
 `
 
 const Stock = styled(Store)``
+
+const Text = styled.div`
+	display: flex;
+	justify-content: center;
+	width: 100%;
+`
