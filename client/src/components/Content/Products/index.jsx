@@ -37,16 +37,22 @@ export const Products = () => {
 
 	return (
 		<MainWrapper>
-			<Title>All Products</Title>
-			<Actions>
-				<ItemCodeInput placeholder='Item Code' ref={itemCodeRef} />
-				<PriceInput placeholder='Price' ref={priceRef} />
-				<NameInput placeholder='Name' ref={nameRef} />
-				<DescInput placeholder='Description' ref={descRef} />
-				<AddButton color={'#43497e'} hoverColor={'#1c2260'} onClick={handleAdd}>
-					Add
-				</AddButton>
-			</Actions>
+			<NewProductWrapper>
+				<Title>Add a New Product</Title>
+				<Actions>
+					<ItemCodeInput placeholder='Item Code' ref={itemCodeRef} />
+					<PriceInput placeholder='Price' ref={priceRef} />
+					<NameInput placeholder='Name' ref={nameRef} />
+					<DescInput placeholder='Description' ref={descRef} />
+					<AddButton
+						color={'#43497e'}
+						hoverColor={'#1c2260'}
+						onClick={handleAdd}>
+						Add
+					</AddButton>
+				</Actions>
+			</NewProductWrapper>
+			<AllProducts>All Products</AllProducts>
 			<ProductList />
 		</MainWrapper>
 	)
@@ -57,21 +63,43 @@ const MainWrapper = styled.div`
 	flex-direction: column;
 `
 
+const NewProductWrapper = styled.div`
+	border: 2px solid #1c2260;
+	padding: 15px;
+`
+
 const Title = styled.h3`
 	grid-area: title;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 500;
+`
+
+const AllProducts = styled.h3`
+	margin-top: 2rem;
+	text-align: center;
+	font-size: 2.3rem;
+	font-weight: 500;
 `
 
 const Actions = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-areas:
-		'item-code price'
-		'name name'
-		'desc desc'
-		'add-btn add-btn';
+		'item-code item-code price price'
+		'name name name name'
+		'desc desc desc desc'
+		'. add-btn add-btn .';
 	row-gap: 10px;
 	column-gap: 10px;
-	margin: 10px 0;
+
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-areas:
+			'item-code name price'
+			'desc desc add-btn';
+	}
 `
 
 const Input = styled.input`

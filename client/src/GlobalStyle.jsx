@@ -4,20 +4,17 @@ export const GlobalStyle = createGlobalStyle`
   * {
     padding: 0;
     margin: 0;
-    font-family: 'Arial', sans-serif;
     box-sizing: border-box;
   }
 
   body {
     background: #f4f6f8;
-  }
-
-  h1 {
-    font-family: 'Quattrocento', serif;
-  }
-
-  h2, h3 {
     font-family: 'Arial', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Marck Script', cursive;
+    text-decoration: underline;
   }
 
   a {

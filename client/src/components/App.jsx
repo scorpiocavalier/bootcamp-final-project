@@ -41,5 +41,5 @@ const ContentSection = styled.section`
 	grid-area: content;
 	width: 100%;
 	height: 100%;
-	padding: 1rem;
+	padding: 2rem;
 `

@@ -52,8 +52,9 @@ const Brand = styled.span`
 	}
 `
 
-const BrandName = styled.span`
+const BrandName = styled.h1`
 	margin-left: 0.8rem;
+	font-size: 1.8rem;
 `
 
 const Burger = styled.div`
