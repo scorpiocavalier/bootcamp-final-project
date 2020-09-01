@@ -1,13 +1,5 @@
 import { gql } from '@apollo/client'
 
-// export const getStore = gql`
-//   query {
-//     store(location) {
-//       location
-//     }
-//   }
-// `
-
 export const getStores = gql`
   query {
     stores {
@@ -16,21 +8,12 @@ export const getStores = gql`
   }
 `
 
-// export const getProduct = gql`
-//   query {
-//     product(itemCode) {
-//       name
-//       itemCode
-//       price
-//     }
-//   }
-// `
-
-export const getProducts = gql`
+export const GET_PRODUCTS = gql`
   query {
     products {
       name
       itemCode
+      description
       price
     }
   }
@@ -44,7 +27,26 @@ export const GET_STORES_AND_PRODUCTS = gql`
     products {
       name
       itemCode
+      description
       price
     }
   }
 `
+
+// export const getStore = gql`
+//   query {
+//     store(location) {
+//       location
+//     }
+//   }
+// `
+
+// export const getProduct = gql`
+//   query {
+//     product(itemCode) {
+//       name
+//       itemCode
+//       price
+//     }
+//   }
+// `

@@ -19,6 +19,7 @@ export const typeDefs = gql`
     _id: ID
     name: String!
     itemCode: String!
+    description: String!
     price: Float!
     # stockLevel: [StoreStock!]!
   }
@@ -38,6 +39,7 @@ export const typeDefs = gql`
   input productInput {
     name: String!
     itemCode: String!
+    description: String!
     price: Float!
     # stockLevel: [storeStockInput!]!
   }

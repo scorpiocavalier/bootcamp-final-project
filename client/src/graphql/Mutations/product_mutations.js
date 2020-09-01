@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client'
 
 export const ADD_PRODUCT = gql`
-  mutation AddProduct($name: String!, $itemCode: String!, $price: Float!) {
-    addProduct(product: {name: $name, itemCode: $itemCode, price: $price}) {
+  mutation AddProduct($name: String!, $itemCode: String!, $description: String!, $price: Float!) {
+    addProduct(product: {name: $name, itemCode: $itemCode, description: $description, price: $price}) {
       name
       itemCode
+      description
       price
     }
   }

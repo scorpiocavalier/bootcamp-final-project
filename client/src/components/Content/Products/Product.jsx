@@ -67,12 +67,7 @@ export const Product = ({ product, stores }) => {
 
 			<ItemDetails open={open}>
 				<DescriptionWrapper>
-					<Description>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
-						exercitationem! Odio ab vero blanditiis dolores et, ducimus ullam
-						nam quam consequuntur eveniet vel aspernatur placeat at ut
-						architecto vitae optio.
-					</Description>
+					<Description>{product.description}</Description>
 
 					<EditDelete>
 						<Button
@@ -203,23 +198,28 @@ const ItemDetails = styled(Accordion)`
 `
 
 const DescriptionWrapper = styled.div`
-	display: flex;
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+	grid-template-areas: 'description editdelete';
 	padding: 0 10px;
 `
 
 const Description = styled.p`
+	grid-area: description;
 	padding: 10px 0;
 `
 
 const EditDelete = styled.div`
+	grid-area: editdelete;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	padding: 5px 0;
 
 	@media (min-width: 1024px) {
 		flex-direction: row;
+		justify-content: flex-end;
 	}
 `
 

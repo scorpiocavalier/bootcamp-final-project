@@ -69,19 +69,21 @@ export const resolvers = {
 
     // Add a single product.
     addProduct: async ( parent, args, context, info ) => {
-      const { name, itemCode, price } = args.product
-
+      const { name, itemCode, description, price } = args.product
+      console.log( 'args.product', args.product )
       // Check if product already exists.
       const found = await Product.findOne( { itemCode } )
 
       // Add to database if it doesn't exist.
       if ( !found ) {
-        const newProduct = new Product( { name, itemCode, price } )
+        const newProduct = new Product( { name, itemCode, description, price } )
 
         newProduct.save( err => {
-          err
-            ? console.error( err )
-            : console.log( `${ name } was added successfully!` )
+          if ( err ) {
+            console.error( err )
+          } else {
+            console.log( `${ name } was added successfully!` )
+          }
         } )
 
         return newProduct
@@ -102,7 +104,7 @@ export const resolvers = {
           console.error( err )
         } else {
           console.log( `${ itemCode } has been deleted.` )
-          console.log(res)
+          console.log( res )
           return res
         }
       } )
