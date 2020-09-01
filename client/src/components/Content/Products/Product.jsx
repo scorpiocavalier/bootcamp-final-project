@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useMutation } from '@apollo/client'
 
-import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/product_queries'
+import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/queries'
 import { DELETE_PRODUCT } from '../../../graphql/Mutations/product_mutations'
 
 import { AcceptIcon, CloseIcon } from '../../Utilities/Icons/index'

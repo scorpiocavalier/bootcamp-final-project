@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/client'
 
-import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/product_queries'
+import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/queries'
 
 import { Product } from './Product'
 
@@ -18,9 +18,6 @@ export const ProductList = () => {
 		console.log('Error with useQuery(getStoresAndProducts)')
 		return <p>Error</p>
 	}
-
-	// Keep for optimization opportunity
-	console.count( 'ProductList' )
 
 	// Destructuring only after it passes loading and error
 	const { stores, products } = data

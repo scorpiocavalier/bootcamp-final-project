@@ -40,10 +40,10 @@ export const Products = () => {
 			<NewProductWrapper>
 				<Title>Add a New Product</Title>
 				<Actions>
-					<ItemCodeInput placeholder='Item Code' ref={itemCodeRef} />
-					<PriceInput placeholder='Price' ref={priceRef} />
-					<NameInput placeholder='Name' ref={nameRef} />
-					<DescInput placeholder='Description' ref={descRef} />
+					<ItemCodeInput placeholder='Item Code' ref={itemCodeRef} tabindex='1' />
+					<NameInput placeholder='Name' ref={nameRef} tabindex='2' />
+					<PriceInput placeholder='Price' ref={priceRef} tabindex='3' />
+					<DescInput placeholder='Description' ref={descRef} tabindex='4' />
 					<AddButton
 						color={'#43497e'}
 						hoverColor={'#1c2260'}

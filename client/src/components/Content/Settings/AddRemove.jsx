@@ -3,35 +3,38 @@ import styled from 'styled-components'
 
 import { DeleteIcon } from '../../Utilities/Icons/index'
 
-export const AddRemove = ({ initialState, setGlobal }) => {
-	const [state, setState] = useState([...initialState])
+export const AddRemove = ({ initialState }) => {
+	const [state, setState] = useState(initialState)
 	const [response, setResponse] = useState('')
 	const [responseColor, setResponseColor] = useState('')
 
 	const addInput = () => {
-		state.push('')
-		setState([...state])
+		state.push({ __typename: 'Store', location: '' })
+		setState(state)
+		console.log('state', state)
 	}
 
 	const handleChange = (event, index) => {
-		state[index] = event.target.value
-		setState([...state])
+		state[index].location = event.target.value
+		setState(state)
+		console.log('state', state)
 	}
 
 	const save = () => {
 		try {
-			setGlobal(state)
 			setResponse('Saved successfully!')
 			setResponseColor('green')
 		} catch {
 			setResponse('An error has occurred.')
 			setResponseColor('red')
 		}
+		console.log('state', state)
 	}
 
 	const remove = index => {
 		state.splice(index, 1)
-		setState([...state])
+		setState(state)
+		console.log('state', state)
 	}
 
 	console.log('state', state)
@@ -41,7 +44,7 @@ export const AddRemove = ({ initialState, setGlobal }) => {
 			{state.map((element, index) => (
 				<InputWrapper key={index}>
 					<Input
-						value={element}
+						value={element.location}
 						onChange={event => handleChange(event, index)}
 					/>
 					<IconWrapper onClick={() => remove(index)}>
