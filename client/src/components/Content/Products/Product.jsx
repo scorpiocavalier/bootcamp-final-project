@@ -6,12 +6,16 @@ import { GET_STORES_AND_PRODUCTS } from '../../../graphql/Queries/queries'
 import { DELETE_PRODUCT } from '../../../graphql/Mutations/product_mutations'
 import { Modal } from '../../Utilities/Modal/index'
 import { AcceptIcon, CloseIcon } from '../../Utilities/Icons/index'
+import { EditProductModal } from './EditProductModal'
 
 export const Product = ({ product, stores }) => {
 	const [openDetails, setOpenDetails] = useState(false)
-	const [deletePlaceholder, setDeletePlaceholder] = useState('Delete')
 	const [openEdit, setOpenEdit] = useState(false)
 	const [showConfirmDelete, setShowConfirmDelete] = useState(false)
+	const [deletePlaceholder, setDeletePlaceholder] = useState('Delete')
+
+	const toggleModal = () => setOpenEdit(!openEdit)
+	const closeModal = () => setOpenEdit(false)
 
 	const refetchData = {
 		refetchQueries: mutationResult => [{ query: GET_STORES_AND_PRODUCTS }],
@@ -57,11 +61,19 @@ export const Product = ({ product, stores }) => {
 					<Description>{product.description}</Description>
 
 					<EditDelete>
-						<EditButton
-							onClick={() => triggerEdit(product.itemCode)}
-							showConfirmDelete={showConfirmDelete}>
-							<Text>Edit</Text>
-						</EditButton>
+						<>
+							<EditButton
+								onClick={toggleModal}
+								showConfirmDelete={showConfirmDelete}>
+								<Text>Edit</Text>
+							</EditButton>
+							<Modal
+								title={product.itemCode}
+								isOpen={openEdit}
+								onClose={closeModal}>
+								<EditProductModal product={product} />
+							</Modal>
+						</>
 
 						<ConfirmButton
 							onClick={() => confirmDelete(product.itemCode)}
