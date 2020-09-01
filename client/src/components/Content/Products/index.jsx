@@ -14,12 +14,6 @@ export const Products = () => {
 				<Button color={'#43497e'} hoverColor={'#1c2260'}>
 					Add
 				</Button>
-				<Button color={'#43497e'} hoverColor={'darkorange'}>
-					Edit
-				</Button>
-				<Button color={'#43497e'} hoverColor={'darkred'}>
-					Delete
-				</Button>
 			</Actions>
 			<ProductList />
 		</MainWrapper>
