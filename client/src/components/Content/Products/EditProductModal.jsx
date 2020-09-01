@@ -5,11 +5,10 @@ import { useMutation } from '@apollo/client'
 import { GET_PRODUCTS } from '../../../graphql/Queries/product_queries'
 import { UPDATE_PRODUCT } from '../../../graphql/Mutations/product_mutations'
 
-export const EditProductModal = ({ product }) => {
+export const EditProductModal = ({ product, onClose }) => {
 	const { name, itemCode, price, description } = product
 
 	const [nameInput, setNameInput] = useState(name)
-	const [itemCodeInput, setItemCodeInput] = useState(itemCode)
 	const [priceInput, setPriceInput] = useState(price)
 	const [descInput, setDescInput] = useState(description)
 
@@ -25,25 +24,21 @@ export const EditProductModal = ({ product }) => {
 
 	const [updateProduct] = useMutation(UPDATE_PRODUCT, refetchData)
 
-  const handleUpdate = () => {
-    console.log( 'nameRef.current.value', nameRef.current.value )
-    console.log( 'itemCodeRef.current.value', itemCodeRef.current.value )
-    console.log( 'descRef.current.value', descRef.current.value )
-    console.log('price.current.value', priceRef.current.value)
+	const handleUpdate = () => {
+		console.log('nameRef.current.value', nameRef.current.value)
+		console.log('descRef.current.value', descRef.current.value)
+		console.log('price.current.value', priceRef.current.value)
 
 		updateProduct({
 			variables: {
+				itemCode: itemCode,
 				name: nameRef.current.value,
-				itemCode: itemCodeRef.current.value,
 				description: descRef.current.value,
 				price: parseFloat(priceRef.current.value),
 			},
 		})
 
-		nameRef.current.value = ''
-		itemCodeRef.current.value = ''
-		descRef.current.value = ''
-		priceRef.current.value = ''
+		onClose()
 	}
 
 	return (
@@ -51,29 +46,23 @@ export const EditProductModal = ({ product }) => {
 			<NewProductWrapper>
 				<Title>Update a Product</Title>
 				<Actions>
-					<ItemCodeInput
-						value={itemCodeInput}
-						onChange={(e) => setItemCodeInput(e.target.value)}
-						ref={itemCodeRef}
-						tabindex='1'
-					/>
 					<NameInput
 						value={nameInput}
-						onChange={(e) => setNameInput(e.target.value)}
+						onChange={e => setNameInput(e.target.value)}
 						ref={nameRef}
+						tabindex='1'
+					/>
+					<DescInput
+						value={descInput}
+						onChange={e => setDescInput(e.target.value)}
+						ref={descRef}
 						tabindex='2'
 					/>
 					<PriceInput
 						value={priceInput}
-						onChange={(e) => setPriceInput(e.target.value)}
+						onChange={e => setPriceInput(e.target.value)}
 						ref={priceRef}
 						tabindex='3'
-					/>
-					<DescInput
-						value={descInput}
-						onChange={(e) => setDescInput(e.target.value)}
-						ref={descRef}
-						tabindex='4'
 					/>
 					<UpdateButton
 						color={'#43497e'}
@@ -89,11 +78,11 @@ export const EditProductModal = ({ product }) => {
 
 const MainWrapper = styled.div`
 	display: flex;
-	flex-direction: column;
 `
 
 const NewProductWrapper = styled.div`
 	border: 2px solid #1c2260;
+	min-width: 300px;
 	padding: 15px;
 `
 
@@ -107,30 +96,19 @@ const Title = styled.h3`
 
 const Actions = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-template-areas:
-		'item-code item-code price price'
-		'name name name name'
-		'desc desc desc desc'
-		'. add-btn add-btn .';
+		'name'
+		'desc'
+		'price'
+		'add-btn';
 	row-gap: 10px;
 	column-gap: 10px;
-
-	@media (min-width: 768px) {
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-areas:
-			'item-code name price'
-			'desc desc add-btn';
-	}
 `
 
 const Input = styled.input`
 	height: 2rem;
 	padding: 5px;
-`
-
-const ItemCodeInput = styled(Input)`
-	grid-area: item-code;
 `
 
 const PriceInput = styled(Input)`

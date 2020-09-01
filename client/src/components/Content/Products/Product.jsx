@@ -26,8 +26,6 @@ export const Product = ({ product, stores }) => {
 
 	const toggle = () => setOpenDetails(!openDetails)
 
-	const triggerEdit = itemCode => {}
-
 	const triggerDelete = () => {
 		if (deletePlaceholder instanceof Object) {
 			setShowConfirmDelete(false)
@@ -71,7 +69,7 @@ export const Product = ({ product, stores }) => {
 								title={product.itemCode}
 								isOpen={openEdit}
 								onClose={closeModal}>
-								<EditProductModal product={product} />
+								<EditProductModal product={product} onClose={closeModal} />
 							</Modal>
 						</>
 
