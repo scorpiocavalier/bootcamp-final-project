@@ -4,27 +4,43 @@ A retail backend platform for managing stores and simplifying daily tasks.
 
 Features will include, but not limited to:
 <ul>
-  <li>CRUD Product Inventory</li>
+  <li>CRUD Products</li>
+  <li>CRUD Stores</li>
+  <li>CRUD Employees</li>
+  <li>CRUD Customers</li>
+  <li>CRUD Sale Orders</li>
   <li>Inventory Count</li>
-  <li>Product Requests & Transfers</li>
+  <li>Inventory Transfers</li>
   <li>View Employee Performance</li>
   <li>View Store Numbers</li>
   <li>Goal Setting</li>
-  <li>CRUD Sale Orders</li>
   <li>Chat System</li>
 </ul>
 
 ## Technologies Used
 
-<ul>
-  <li>MongoDB/Mongoose</li>
-  <li>React</li>
-  <li>Node</li>
-  <li>GraphQL</li>
-  <li>Apollo Server/Client</li>
-  <li>Auth0</li>
-</ul>
-
+<table>
+  <tr>
+    <th>Front End</th>
+    <td>React</td>
+    <td>Apollo Client</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <th>API</th>
+    <td>Auth0</td>
+    <td>GraphQL</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <th>Back End</th>
+    <td>Node</td>
+    <td>Apollo Server</td>
+    <td>MongoDB</td>
+  </tr>
+</table>
 
 ## Extras
 <ul>
