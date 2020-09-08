@@ -1,5 +1,19 @@
 # Bootcamp Final Project (Work in Progress)
 
+A retail backend platform for managing stores and simplifying daily tasks.
+
+Features will include, but not limited to:
+<ul>
+  <li>CRUD Product Inventory</li>
+  <li>Inventory Count</li>
+  <li>Product Requests & Transfers</li>
+  <li>View Employee Performance</li>
+  <li>View Store Numbers</li>
+  <li>Goal Setting</li>
+  <li>CRUD Sale Orders</li>
+  <li>Chat System</li>
+</ul>
+
 ## Technologies Used
 
 <ul>
