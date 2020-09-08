@@ -2,22 +2,14 @@
 
 ## Technologies Used
 
-### MERN Stack
-
 <ul>
-  <li>MongoDB</li>
-  <li>Express</li>
+  <li>MongoDB/Mongoose</li>
   <li>React</li>
   <li>Node</li>
-</ul>
-
-### Other Technologies
-
-<ul>
   <li>GraphQL</li>
-  <li>Firebase Auth</li>
+  <li>Apollo Server/Client</li>
+  <li>Auth0</li>
 </ul>
-
 
 ## Repo
 
