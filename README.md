@@ -26,14 +26,14 @@ Features will include, but not limited to:
     <td>Apollo Client</td>
     <td></td>
   </tr>
-  
+
   <tr>
     <th>API</th>
     <td>Auth0</td>
     <td>GraphQL</td>
     <td></td>
   </tr>
-  
+
   <tr>
     <th>Back End</th>
     <td>Node</td>
@@ -62,6 +62,9 @@ Features will include, but not limited to:
 
 ## Delete a Product
 <img src='./screenshots/delete-a-product.PNG'>
+
+## Inventory Counter
+<img src='./screenshots/inventory-counter.PNG'>
 
 ## User Authentication with Auth0
 <img src='./screenshots/auth0.PNG'>
