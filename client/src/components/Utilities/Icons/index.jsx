@@ -15,6 +15,8 @@ import {
 	DeleteMajorMonotone,
 	CircleTickMajorMonotone,
 	CircleCancelMajorMonotone,
+	MinusMinor,
+	PlusMinor,
 } from '@shopify/polaris-icons'
 
 const StyledIcon = ({ fill, size, source }) => (
@@ -73,6 +75,14 @@ export const AcceptIcon = ({ fill, size }) => (
 
 export const CloseIcon = ( { fill, size } ) => (
 	<StyledIcon fill={fill} size={size} source={CircleCancelMajorMonotone} />
+)
+
+export const MinusIcon = ({ fill, size }) => (
+	<StyledIcon fill={fill} size={size} source={MinusMinor} />
+)
+
+export const PlusIcon = ({ fill, size }) => (
+	<StyledIcon fill={fill} size={size} source={PlusMinor} />
 )
 
 const Span = styled.span`
